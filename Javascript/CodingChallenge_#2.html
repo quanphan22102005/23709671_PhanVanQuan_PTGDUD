@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>BMI for Mark and John</title>
+</head>
+<body>
+  <div class="container">
+    Mark Mass: <input id="markMass" type="text">
+    <br>
+    Mark Height: <input type="text" name="" id="markHeight">
+    <br>
+    John Mass: <input type="text" id="johnMass">
+    <br>
+    John Height: <input type="text" id="johnHeight">
+    <br>
+    <button id="btnCal" onclick="calculateBMI()">Cal BMI</button>
+    <div id="result">
+    </div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      var markMass = document.getElementById('markMass');
+      var markHeight = document.getElementById('markHeight');
+      var johnMark = document.getElementById('johnMass');
+      var johnHeight = document.getElementById('johnHeight');
+
+      const markBMI = parseFloat(markMass.value)/parseFloat(markHeight.value**2);
+      const johnBMI = parseFloat(johnMass.value)/parseFloat(johnHeight.value**2);
+      
+      var message;
+        
+      if(markBMI > johnBMI) {
+        message = `Mark's BMI(${markBMI.toFixed(2)}) is higher than John's BMI(${johnBMI.toFixed(2)})`;
+      } else if(johnBMI > markBMI) {
+        message = `John's BMI(${johnBMI.toFixed(2)}) is higher than Mark's BMI(${markBMI.toFixed(2)})`;
+      } else {
+        message = `Mark and John have the same BMI: ${markBMI.toFixed(2)}`;
+      }
+
+      document.getElementById('result').innerHTML = `
+        <p>Mark BMI: ${markBMI.toFixed(2)}</p>
+        <br>
+        <p>John BMI: ${johnBMI.toFixed(2)}</p>
+        <p>${message}</p>
+      `;
+    }
+  </script>  
+</body>
+</html>
