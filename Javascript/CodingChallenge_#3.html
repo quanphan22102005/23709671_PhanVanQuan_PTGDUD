@@ -1,0 +1,61 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p><strong>Koalas Score</strong></p>
+        <br>
+        <input type="text" id="koalasScore1">
+        <br>
+        <input type="text" id="koalasScore2">
+        <br>
+        <input type="text" id="koalasScore3">
+        <br>
+        <p><strong>Dolphins Score</strong></p>
+        <br>
+        <input type="text" id="dolphinsScore1">
+        <br>
+        <input type="text" id="dolphinsScore2">
+        <br>
+        <input type="text" id="dolphinsScore3">
+        <br>
+        <button id="btnCompare" onclick="findTheWinner()">Find the WINNER</button>
+        <br>
+        <div id="result"></div>
+
+        <script>
+        function findTheWinner() {
+            koalasScore1 = document.getElementById('koalasScore1');
+            koalasScore2 = document.getElementById('koalasScore2');
+            koalasScore3 = document.getElementById('koalasScore3');
+            dolphinsScore1 = document.getElementById('dolphinsScore1');
+            dolphinsScore2 = document.getElementById('dolphinsScore2');
+            dolphinsScore3 = document.getElementById('dolphinsScore3');
+
+            var averageKoalasScore = (parseFloat(koalasScore1.value) + parseFloat(koalasScore2.value) + parseFloat(koalasScore3.value)) / 3;
+            var averageDolphinsScore = (parseFloat(dolphinsScore1.value) + parseFloat(dolphinsScore2.value) + parseFloat(dolphinsScore3.value)) / 3;
+
+            var message;
+
+            if(averageKoalasScore > averageDolphinsScore && averageKoalasScore>=100) {
+                message = `Koalas is the WINNER!!`;
+            } else if (averageDolphinsScore > averageKoalasScore && averageDolphinsScore>=100) {
+                message = `Dolphins is the WINNER!!`;
+            } else if (averageDolphinsScore == averageKoalasScore && averageDolphinsScore>=100 && averageDolphinsScore>=100) {
+                message = `Koalas and Dolphins have same score`
+            } else {
+                message = `No team won`;
+            }
+
+            document.getElementById('result').innerHTML = `
+                <p>Koalas Average Score: ${averageKoalasScore.toFixed(2)}</p>
+                <p>Dolphins Average Score: ${averageDolphinsScore.toFixed(2)}</p>
+                <p><strong>${message}</strong></p>
+            `;
+        }
+        </script>
+    </body>
+    </html>
