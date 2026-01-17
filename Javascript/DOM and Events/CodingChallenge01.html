@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="message">Start guessing...</p>
+    <div class="number">???</div>
+    <input type="number" class="guess">
+    <p>Score: <span class="score">20</span></p>
+    <button class="again">Reset Game</button>
+    <button class="check">Check!</button>
+
+    <script>
+        let score = 20;
+        let secretScore = Math.trunc(Math.random() * 20) + 1;
+
+        const message = document.querySelector(".message");
+        const againBtn = document.querySelector(".again");
+        const number = document.querySelector(".number");
+        const guess = document.querySelector(".guess");
+        const scoreE1 = document.querySelector(".score");
+        const checkBtn = document.querySelector(".check");
+
+        againBtn.addEventListener('click', function() {
+            score = 20;
+            secretScore = Math.trunc(Math.random() * 20) + 1;
+
+            message.textContent = "Start guessing...";
+            number.textContent = "???";
+            guess.value = "";
+            scoreE1.textContent = score;
+
+            document.body.style.backgroundColor = '#222';
+            number.style.width = '15rem';
+        });
+
+        checkBtn.addEventListener('click', function() {
+            const guessValue = Number(guess.value);
+
+            if(!guessValue) {
+                message.textContent = "No number!!!";
+            } else if(guessValue === secretScore) {
+                message.textContent = "Congratulation!!!"
+                number.textContent = secretScore;
+                document.body.style.backgroundColor = "#60b347";
+                number.style.width = '30rem';
+                secretScore = Math.trunc(Math.random() * 20) + 1;
+            } else {
+                if (score > 1) {
+                    message.textContent =
+                        guessValue > secretScore ? 'Too high!' : 'Too low!';
+                    score--;
+                    scoreE1.textContent = score;
+                } else {
+                    message.textContent = 'You lost the game!';
+                    scoreE1.textContent = 0;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

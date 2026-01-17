@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        let output = ``;
+        const printForecast = (temperature) => {
+            for(let i = 0; i < temperature.length; i++) {
+                output += `...${temperature[i]}°C in ${i+1} days...`;
+                document.getElementById("result").textContent = output;
+            }
+        };
+
+        const arr = [17, 21, 23];
+        printForecast(arr);
+    </script>
+</body>
+</html>
