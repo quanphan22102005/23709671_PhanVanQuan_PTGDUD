@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const game = { 
+            team1: 'Bayern Munich', 
+            team2: 'Borrussia Dortmund', 
+            players: [ 
+                [ 
+                    'Neuer', 
+                    'Pavard', 
+                    'Martinez', 
+                    'Alaba', 
+                    'Davies', 
+                    'Kimmich', 
+                    'Goretzka', 
+                    'Coman', 
+                    'Muller', 
+                    'Gnarby', 
+                    'Lewandowski', 
+                ], 
+                [ 
+                    'Burki', 
+                    'Schulz', 
+                    'Hummels', 
+                    'Akanji', 
+                    'Hakimi', 
+                    'Weigl', 
+                    'Witsel', 
+                    'Hazard', 
+                    'Brandt', 
+                    'Sancho', 
+                    'Gotze', 
+                ], 
+            ], 
+            score: '4:0', 
+            scored: ['Lewandowski', 'Gnarby', 'Lewandowski',  
+            'Hummels'], 
+            date: 'Nov 9th, 2037', 
+            odds: { 
+                team1: 1.33, 
+                x: 3.25, 
+                team2: 6.5, 
+            }, 
+        };
+
+        for(let i = 0; i < game.scored.length; i++) {
+            console.log(`Goal ${i+1}: ${game.scored[i]}`);
+        }
+
+        const oddsValue = Object.values(game.odds);
+        let sum = 0;
+        let count = 0;
+        for(let i = 0; i < oddsValue.length; i++) {
+            sum += oddsValue[i];
+            count = i+1;
+        }
+        sum /= count;
+
+        console.log(`Average odd: ${sum}`);
+
+        console.log(`Odd of victory ${game.team1}: ${game.odds.team1}`);
+        console.log(`Odd of draw: ${game.odds.x}`);
+        console.log(`Odd of victory ${game.team2}: ${game.odds.team2}`);
+    </script>
+</body>
+</html>

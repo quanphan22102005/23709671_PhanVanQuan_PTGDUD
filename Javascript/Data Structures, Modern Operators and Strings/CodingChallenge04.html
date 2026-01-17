@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const textarea = document.createElement('textArea');
+        document.body.append(textarea);
+
+        const applyButton = document.createElement('button');
+        applyButton.textContent = "Covert";
+        document.body.append(applyButton);
+
+        applyButton.addEventListener('click', function() {
+            const text = textarea.value;
+            const rows = text.split("\n");
+
+            for(let i = 0; i < rows.length; i++) {
+                const row = rows[i].trim().toLowerCase();
+
+                const [first, second] = row.split('_');
+
+                const camelCase = first + second[0].toUpperCase() + second.slice(1);
+
+                const checkMark = '✅'.repeat(i+1);
+
+                console.log(camelCase.padEnd(20), checkMark);
+            }
+        });
+    </script>
+</body>
+</html>
