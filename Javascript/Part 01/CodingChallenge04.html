@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Tip</title>
+</head>
+<body>
+
+    <label for="billValue">Bill value:</label>
+    <input type="text" id="billValue">
+    <br><br>
+
+    <button onclick="calculateTip()">Calculate Tip</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateTip() {
+            var billValue = document.getElementById('billValue');
+            var billValueReal = parseFloat(billValue.value);
+
+            let tip = (billValueReal >= 50 && billValueReal <= 300)
+                ? billValueReal * 0.15
+                : billValueReal * 0.2;
+
+            let total = billValueReal + tip;
+
+            document.getElementById("result").innerHTML = `
+                <p><strong>
+                    The bill was ${billValueReal}, the tip was ${tip}, and the total value ${total}
+                </strong></p>
+            `;
+        }
+    </script>
+
+</body>
+</html>

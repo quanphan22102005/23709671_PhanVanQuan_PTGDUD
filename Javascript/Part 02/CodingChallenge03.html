@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Mark Miller</h2>
+    <label>Weight (kg):</label>
+    <input type="number" id="markWeight"><br>
+
+    <label>Height (m):</label>
+    <input type="number" step="0.01" id="markHeight"><br><br>
+
+    <h2>John Smith</h2>
+    <label>Weight (kg):</label>
+    <input type="number" id="johnWeight"><br>
+
+    <label>Height (m):</label>
+    <input type="number" step="0.01" id="johnHeight"><br><br>
+
+    <button onclick="compareBMI()">Compare BMI</button>
+
+    <h3>Result:</h3>
+    <div id="result"></div>
+
+    <script>
+        const compareBMI = () => {
+            const mark = {
+                name: "Mark Miller",
+                weight: parseFloat(document.getElementById("markWeight").value),
+                height: parseFloat(document.getElementById("markHeight").value),
+                calcBMI: function () {
+                    this.bmi = this.weight/(this.height**2);
+                    return this.bmi;
+                }
+            };
+
+            const john = {
+                name: "John Smith",
+                weight: parseFloat(document.getElementById("johnWeight").value),
+                height: parseFloat(document.getElementById("johnHeight").value),
+                calcBMI: function () {
+                    this.bmi = this.weight/(this.height**2);
+                    return this.bmi;
+                }
+            };
+
+            const markBMI = mark.calcBMI();
+            const johnBMI = john.calcBMI();
+
+            if(markBMI > johnBMI) {
+                document.getElementById("result").innerHTML = `
+                    <p><strong>
+                        ${mark.name}'s BMI(${markBMI.toFixed(1)}) is higher than ${john.name}'s BMI(${johnBMI.toFixed(1)})
+                    </strong></p>
+                `;
+            } else if(markBMI < johnBMI) {
+                document.getElementById("result").innerHTML = `
+                    <p><strong>
+                        ${john.name}'s BMI(${johnBMI.toFixed(1)}) is higher than ${mark.name}'s BMI(${markBMI.toFixed(1)})
+                    </strong></p>
+                `;
+            } else {
+                document.getElementById("result").innerHTML = `
+                    <p><strong>
+                        ${john.name}'s BMI(${johnBMI.toFixed(1)}) is same ${mark.name}'s BMI(${markBMI.toFixed(1)})
+                    </strong></p>
+                `;
+            }
+        };
+    </script>
+</body>
+</html>

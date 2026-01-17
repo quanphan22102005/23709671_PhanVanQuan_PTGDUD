@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gymnastics Winner</title>
+</head>
+<body>
+
+<h3>Koalas score:</h3>
+<input type="text" id="score1"><br>
+<input type="text" id="score2"><br>
+<input type="text" id="score3"><br>
+
+<h3>Dolphins score:</h3>
+<input type="text" id="score4"><br>
+<input type="text" id="score5"><br>
+<input type="text" id="score6"><br><br>
+
+<button onclick="find()">Find the winner!</button>
+
+<div id="result"></div>
+
+<script>
+    const average = (a, b, c) => (a + b + c) / 3;
+
+    const find = () => {
+        const k1 = Number(document.getElementById("score1").value);
+        const k2 = Number(document.getElementById("score2").value);
+        const k3 = Number(document.getElementById("score3").value);
+
+        const d1 = Number(document.getElementById("score4").value);
+        const d2 = Number(document.getElementById("score5").value);
+        const d3 = Number(document.getElementById("score6").value);
+
+        const avgKoalas = average(k1, k2, k3);
+        const avgDolphins = average(d1, d2, d3);
+
+        let result = "";
+
+        if (avgKoalas >= 2 * avgDolphins) {
+            result = `Koalas win (${avgKoalas} vs ${avgDolphins})`;
+        } else if (avgDolphins >= 2 * avgKoalas) {
+            result = `Dolphins win (${avgDolphins} vs ${avgKoalas})`;
+        } else {
+            result = "No team wins!";
+        }
+
+        document.getElementById("result").innerHTML = `<strong>${result}</strong>`;
+    };
+</script>
+
+</body>
+</html>
