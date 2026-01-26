@@ -1,0 +1,20 @@
+.badge {
+  padding: 12px;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  margin: 20px;
+}
+
+.online {
+  background-color: green;
+}
+
+.offline {
+  background-color: grey;
+}
+
+.busy {
+  background-color: rgb(224, 27, 27);
+}
